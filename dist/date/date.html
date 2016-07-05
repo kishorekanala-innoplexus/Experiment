@@ -1,0 +1,56 @@
+<div >
+	<div style="margin:15px;">
+		<label>Date</label>
+		<input type="text" placeholder="{{$ctrl.output}}" readonly>
+	</div>
+	<div class="pane pane-default" style="width:400px;height:450px;">
+		<div class="pane-heading">
+			<div class="col-md" >
+				<select ng-model="$ctrl.monthModel" ng-change="$ctrl.Selection()" ng-options="month.id as month.month for month in $ctrl.month"></select>
+			</div>
+			<div class="col-md" >
+				<select ng-model="$ctrl.yearModel" ng-change="$ctrl.Selection()" ng-options="year as year for year in $ctrl.year"></select>
+			</div>
+			<div class="col-md" >
+				<select ng-model="$ctrl.formatModel" ng-change="$ctrl.SelectionFormatSeparator()" ng-options="format.id as format.name for format in $ctrl.format"></select>
+			</div>
+			<div class="col-md" >
+				<select ng-model="$ctrl.separatorModel" ng-change="$ctrl.SelectionFormatSeparator()" ng-options="separator.id as separator.name for separator in $ctrl.separator"></select>
+			</div>
+			<div class="col-md">
+				<input type="checkbox" ng-model="$ctrl.checked" ><label>Disable Weekends</label> 
+			</div>
+		</div>
+		<div class="pane-body"> 
+			<table class="tabl tabl-responsive tabl-bordered  tabl-hover" align="center">
+				<thead>
+					<tr >
+						<td style=" background-color: #dff0d8;" ng-repeat="day in $ctrl.days" align="center">{{day}}</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td   align="center" ng-repeat="row0 in $ctrl.calendar.row0 track by $index"><button ng-click="$ctrl.dateSelection(row0,$index)" class="btn btn-sm " ng-class="{true:'btn-primary'}[$ctrl.clicked == $index && $ctrl.date==row0 && $ctrl.monthModel==$ctrl.selectedMonth && $ctrl.yearModel==$ctrl.selectedYear ]" ng-disabled="$ctrl.check(row0,$index)">{{row0 }}</button></td>
+					</tr>
+					<tr>
+						<td  align="center" ng-repeat="row0 in $ctrl.calendar.row1 track by $index"><button ng-click="$ctrl.dateSelection(row0,$index)" class="btn btn-sm  " ng-class="{true:'btn-primary'}[$ctrl.clicked == $index && $ctrl.date==row0 && $ctrl.monthSelected==$ctrl.selectedMonth && $ctrl.yearSelected==$ctrl.selectedYear ]"  ng-disabled="$ctrl.check(row0,$index)">{{row0 }}</button></td>
+					</tr>
+					<tr>
+						<td  align="center" ng-repeat="row0 in $ctrl.calendar.row2 track by $index"><button ng-click="$ctrl.dateSelection(row0,$index)" class="btn btn-sm " ng-class="{true:'btn-primary'}[$ctrl.clicked == $index && $ctrl.date==row0 && $ctrl.monthSelected==$ctrl.selectedMonth && $ctrl.yearSelected==$ctrl.selectedYear]" ng-disabled="$ctrl.check(row0,$index)">{{row0 }}</button></td>
+					</tr>
+					<tr>
+						<td  align="center" ng-repeat="row0 in $ctrl.calendar.row3 track by $index"><button ng-click="$ctrl.dateSelection(row0,$index)" class="btn btn-sm "  ng-class="{true:'btn-primary'}[$ctrl.clicked == $index && $ctrl.date==row0 && $ctrl.monthSelected==$ctrl.selectedMonth && $ctrl.yearSelected==$ctrl.selectedYear]" ng-disabled="$ctrl.check(row0,$index)">{{row0 }}</button></td>
+					</tr>
+					<tr>
+						<td  align="center" ng-repeat="row0 in $ctrl.calendar.row4 track by $index"><button ng-click="$ctrl.dateSelection(row0,$index)" class="btn btn-sm " ng-class="{true:'btn-primary'}[$ctrl.clicked == $index && $ctrl.date==row0 && $ctrl.monthSelected==$ctrl.selectedMonth && $ctrl.yearSelected==$ctrl.selectedYear ]" ng-disabled="$ctrl.check(row0,$index)">{{row0 }}</button></td>
+					</tr>
+					<tr>
+						<td  align="center" ng-repeat="row0 in $ctrl.calendar.row5 track by $index"><button ng-click="$ctrl.dateSelection(row0,$index)" class="btn btn-sm  " ng-class="{true:'btn-primary'}[$ctrl.clicked == $index && $ctrl.date==row0 && $ctrl.monthSelected==$ctrl.selectedMonth  && $ctrl.yearSelected==$ctrl.selectedYear]" ng-disabled="$ctrl.check(row0,$index)">{{row0 }}</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
